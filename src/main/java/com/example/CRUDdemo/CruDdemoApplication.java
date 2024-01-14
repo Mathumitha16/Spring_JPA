@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class CruDdemoApplication {
 
@@ -18,17 +20,29 @@ public class CruDdemoApplication {
 	public CommandLineRunner commandLineRunner(studentDao studentDaoVar){
 		return runner ->{
 			createAndReadStudent(studentDaoVar);
+			queryAllStudents(studentDaoVar);
 		};
 	}
 	public void createAndReadStudent(studentDao studentDaoVar){
-
-		Student tempStudent = new Student("Roja","Rani","rojaRani@gmail.com");
+        //creating new student object
+		Student tempStudent = new Student("lokesh","Kumar","lokesh@gmail.com");
 		System.out.println("New student created");
+		//storing the student object to database
 		studentDaoVar.save(tempStudent);
 		System.out.println("Student with id : "+tempStudent.getId()+" saved in database");
+		//querying the database based on primary key
 		Student read = studentDaoVar.findById(tempStudent.getId());
 		System.out.println("Displaying the read student");
 		System.out.println(read.toString());
+	}
+	public void queryAllStudents(studentDao studentDaoVar){
+		//fetching the result
+		List<Student> res = studentDaoVar.findAll();
+		//printing all the items from the result
+		System.out.println("Printing the query result for find all");
+		for(Student x : res){
+			System.out.println(x.toString());
+		}
 	}
 
 }
