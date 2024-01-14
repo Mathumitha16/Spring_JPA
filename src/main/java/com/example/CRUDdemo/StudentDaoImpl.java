@@ -1,3 +1,5 @@
+package com.example.CRUDdemo;
+
 import com.example.CRUDdemo.entity.Student;
 import com.example.CRUDdemo.studentDao;
 import jakarta.persistence.EntityManager;
