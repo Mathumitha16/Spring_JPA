@@ -22,7 +22,7 @@ public class CruDdemoApplication {
 	}
 	public void createStudent(studentDao studentDaoVar){
 
-		Student tempStudent = new Student("Mathumitha","Manovasagam","mehamani7@gmail.com");
+		Student tempStudent = new Student("Chari","Vuppaluvanchu","charithav@gmail.com");
 		System.out.println("New student created");
 		studentDaoVar.save(tempStudent);
 		System.out.println("Student with id : "+tempStudent.getId()+" saved in database");
