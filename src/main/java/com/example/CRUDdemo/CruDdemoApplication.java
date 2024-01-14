@@ -17,15 +17,18 @@ public class CruDdemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(studentDao studentDaoVar){
 		return runner ->{
-			createStudent(studentDaoVar);
+			createAndReadStudent(studentDaoVar);
 		};
 	}
-	public void createStudent(studentDao studentDaoVar){
+	public void createAndReadStudent(studentDao studentDaoVar){
 
-		Student tempStudent = new Student("Chari","Vuppaluvanchu","charithav@gmail.com");
+		Student tempStudent = new Student("Roja","Rani","rojaRani@gmail.com");
 		System.out.println("New student created");
 		studentDaoVar.save(tempStudent);
 		System.out.println("Student with id : "+tempStudent.getId()+" saved in database");
+		Student read = studentDaoVar.findById(tempStudent.getId());
+		System.out.println("Displaying the read student");
+		System.out.println(read.toString());
 	}
 
 }
