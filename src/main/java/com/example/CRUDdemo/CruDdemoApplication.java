@@ -21,8 +21,21 @@ public class CruDdemoApplication {
 		return runner ->{
 			createAndReadStudent(studentDaoVar);
 			queryAllStudents(studentDaoVar);
+			queryByLastName(studentDaoVar,"Balasubramaniam");
 		};
 	}
+
+	private void queryByLastName(studentDao studentDaoVar, String name) {
+		//Call the Dao
+		List<Student> res = studentDaoVar.findByLastName(name);
+		//print the result;
+		System.out.println("Printing the query result for find by LastName");
+		for(Student x : res){
+			System.out.println(x.toString());
+		}
+
+	}
+
 	public void createAndReadStudent(studentDao studentDaoVar){
         //creating new student object
 		Student tempStudent = new Student("lokesh","Kumar","lokesh@gmail.com");
