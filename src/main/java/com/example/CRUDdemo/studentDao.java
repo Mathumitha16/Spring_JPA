@@ -10,6 +10,8 @@ public interface studentDao {
 
     public List<Student> findAll();
 
+    public List<Student> findByLastName(String lastName);
+
 
 
 
