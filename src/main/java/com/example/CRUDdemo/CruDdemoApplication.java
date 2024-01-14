@@ -19,22 +19,14 @@ public class CruDdemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(studentDao studentDaoVar){
 		return runner ->{
-			createAndReadStudent(studentDaoVar);
-			queryAllStudents(studentDaoVar);
-			queryByLastName(studentDaoVar,"Balasubramaniam");
+			//createAndReadStudent(studentDaoVar);
+			//queryAllStudents(studentDaoVar);
+			//queryByLastName(studentDaoVar,"Balasubramaniam");
+			updateLastName(studentDaoVar,1,"Manivasagam");
 		};
 	}
 
-	private void queryByLastName(studentDao studentDaoVar, String name) {
-		//Call the Dao
-		List<Student> res = studentDaoVar.findByLastName(name);
-		//print the result;
-		System.out.println("Printing the query result for find by LastName");
-		for(Student x : res){
-			System.out.println(x.toString());
-		}
 
-	}
 
 	public void createAndReadStudent(studentDao studentDaoVar){
         //creating new student object
@@ -56,6 +48,24 @@ public class CruDdemoApplication {
 		for(Student x : res){
 			System.out.println(x.toString());
 		}
+	}
+	private void queryByLastName(studentDao studentDaoVar, String name) {
+		//Call the Dao
+		List<Student> res = studentDaoVar.findByLastName(name);
+		//print the result;
+		System.out.println("Printing the query result for find by LastName");
+		for(Student x : res){
+			System.out.println(x.toString());
+		}
+
+	}
+	public void updateLastName(studentDao studentDaoVar,int id, String newLastName){
+		//find the data row to be updated
+		Student toChange = studentDaoVar.findById(id);
+		// change name by setter method
+		toChange.setLastName(newLastName);
+		//update to the database
+		studentDaoVar.update(toChange);
 	}
 
 }
