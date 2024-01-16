@@ -19,13 +19,18 @@ public class CruDdemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(studentDao studentDaoVar){
 		return runner ->{
-			//createAndReadStudent(studentDaoVar);
-			//queryAllStudents(studentDaoVar);
-			//queryByLastName(studentDaoVar,"Balasubramaniam");
+			createAndReadStudent(studentDaoVar);
+			queryAllStudents(studentDaoVar);
+			queryByLastName(studentDaoVar,"Balasubramaniam");
 			updateLastName(studentDaoVar,1,"Manivasagam");
+			deleteById(studentDaoVar,8);
 		};
 	}
 
+	private void deleteById(studentDao studentDaoVar,int id) {
+		studentDaoVar.delete(id);
+		System.out.println("Student with id "+id+" deleted");
+	}
 
 
 	public void createAndReadStudent(studentDao studentDaoVar){
