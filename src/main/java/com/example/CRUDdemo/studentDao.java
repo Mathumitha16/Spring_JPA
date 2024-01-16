@@ -16,6 +16,8 @@ public interface studentDao {
 
     public void delete(int id);
 
+    public int deleteByLastName(String lastName);
+
 
 
 

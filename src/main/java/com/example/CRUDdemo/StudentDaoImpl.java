@@ -46,6 +46,7 @@ public class StudentDaoImpl implements studentDao {
     public List<Student> findByLastName(String lastName) {
         //create Query
         TypedQuery<Student> query = entityManager.createQuery("FROM Student WHERE lastName =:data",Student.class) ;
+
         //set Query Parameters
         query.setParameter("data",lastName);
         List<Student> result = query.getResultList();
@@ -62,6 +63,15 @@ public class StudentDaoImpl implements studentDao {
     public void delete(int id){
         Student theStudent = entityManager.find(Student.class,id);
         entityManager.remove(theStudent);
+    }
+
+    @Override
+    @Transactional
+    public int deleteByLastName(String lastName) {
+        int query = entityManager.createQuery("DELETE FROM Student WHERE lastName=:lastName").setParameter("lastName",lastName).executeUpdate();
+        return query;
+
+
     }
 
 }
