@@ -1,7 +1,7 @@
-package com.example.CRUDdemo;
+package com.example.CRUDdemo.DaoImplementations;
 
 import com.example.CRUDdemo.entity.Student;
-import com.example.CRUDdemo.studentDao;
+import com.example.CRUDdemo.Dao.studentDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;

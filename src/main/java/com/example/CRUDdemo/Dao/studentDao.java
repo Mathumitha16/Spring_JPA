@@ -1,4 +1,4 @@
-package com.example.CRUDdemo;
+package com.example.CRUDdemo.Dao;
 
 import com.example.CRUDdemo.entity.Student;
 
