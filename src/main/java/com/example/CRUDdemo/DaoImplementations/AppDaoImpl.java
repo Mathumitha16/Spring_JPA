@@ -1,0 +1,23 @@
+package com.example.CRUDdemo.DaoImplementations;
+
+import com.example.CRUDdemo.Dao.AppDao;
+import com.example.CRUDdemo.entity.Instructor;
+import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class AppDaoImpl implements AppDao {
+    private EntityManager em;
+    @Autowired
+    public AppDaoImpl(EntityManager em){
+        this.em=em;
+    }
+    @Override
+    @Transactional
+    public void saveInstructor(Instructor theInstructor) {
+        em.persist(theInstructor);
+
+    }
+}
