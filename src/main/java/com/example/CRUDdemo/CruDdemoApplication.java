@@ -1,6 +1,9 @@
 package com.example.CRUDdemo;
 
+import com.example.CRUDdemo.Dao.AppDao;
 import com.example.CRUDdemo.Dao.studentDao;
+import com.example.CRUDdemo.entity.Instructor;
+import com.example.CRUDdemo.entity.InstructorDetail;
 import com.example.CRUDdemo.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,15 +21,22 @@ public class CruDdemoApplication {
 
 	}
 	@Bean
-	public CommandLineRunner commandLineRunner(studentDao studentDaoVar){
+	public CommandLineRunner commandLineRunner(AppDao appDao){
 		return runner ->{
 			//createAndReadStudent(studentDaoVar);
 			//queryAllStudents(studentDaoVar);
 			//queryByLastName(studentDaoVar,"Balasubramaniam");
 			//updateLastName(studentDaoVar,1,"Manivasagam");
 			//deleteById(studentDaoVar,8);
-			deleteByLastName(studentDaoVar,"Balasubramaniam");
+			createAndSaveInstructor(appDao);
 		};
+	}
+
+	private void createAndSaveInstructor(AppDao appDao) {
+		Instructor instructor = new Instructor("Chad","Darby","cd@gmail.com");
+		InstructorDetail detail = new InstructorDetail("cd_channel@youtube.com","java");
+		instructor.setInstructorDetail(detail);
+		appDao.saveInstructor(instructor);
 	}
 
 	private void deleteByLastName(studentDao studentDaoVar, String lastName) {
