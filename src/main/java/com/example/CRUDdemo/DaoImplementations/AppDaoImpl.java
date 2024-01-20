@@ -20,4 +20,16 @@ public class AppDaoImpl implements AppDao {
         em.persist(theInstructor);
 
     }
+
+    @Override
+    public Instructor findInstructorById(int id) {
+        return(em.find(Instructor.class,id));
+    }
+
+    @Override
+    @Transactional
+    public void deleteInstructor(int id) {
+        Instructor instructor = em.find(Instructor.class,id);
+        em.remove(instructor);
+    }
 }

@@ -28,13 +28,26 @@ public class CruDdemoApplication {
 			//queryByLastName(studentDaoVar,"Balasubramaniam");
 			//updateLastName(studentDaoVar,1,"Manivasagam");
 			//deleteById(studentDaoVar,8);
-			createAndSaveInstructor(appDao);
+			//createAndSaveInstructor(appDao);
+			//findInstructor(appDao,1);
+			deleteInstructor(appDao,3);
 		};
 	}
 
+	private void deleteInstructor(AppDao appDao, int id) {
+		appDao.deleteInstructor(id);
+		System.out.println("Instructor with id "+id+" deleted");
+	}
+
+	private void findInstructor(AppDao appDao, int id) {
+		Instructor result=appDao.findInstructorById(id);
+		System.out.println(result.toString());
+
+	}
+
 	private void createAndSaveInstructor(AppDao appDao) {
-		Instructor instructor = new Instructor("Chad","Darby","cd@gmail.com");
-		InstructorDetail detail = new InstructorDetail("cd_channel@youtube.com","java");
+		Instructor instructor = new Instructor("mukunth","chavali","mc@gmail.com");
+		InstructorDetail detail = new InstructorDetail("mc_channel@youtube.com","java");
 		instructor.setInstructorDetail(detail);
 		appDao.saveInstructor(instructor);
 	}
