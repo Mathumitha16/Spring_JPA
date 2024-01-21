@@ -2,6 +2,7 @@ package com.example.CRUDdemo.DaoImplementations;
 
 import com.example.CRUDdemo.Dao.AppDao;
 import com.example.CRUDdemo.entity.Instructor;
+import com.example.CRUDdemo.entity.InstructorDetail;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,10 @@ public class AppDaoImpl implements AppDao {
         Instructor instructor = em.find(Instructor.class,id);
         em.remove(instructor);
     }
+
+    @Override
+    public InstructorDetail findInstructorDetail(int id) {
+        return em.find(InstructorDetail.class,id);
+    }
+
 }
