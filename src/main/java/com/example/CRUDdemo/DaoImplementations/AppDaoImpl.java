@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class AppDaoImpl implements AppDao {
     private EntityManager em;
@@ -59,6 +61,14 @@ public class AppDaoImpl implements AppDao {
 
     }
 
+    @Override
+    public List<Course> getCoursesForInstructor(int InstructorId) {
+        TypedQuery<Course> query = em.createQuery("FROM Course WHERE instructor.id=:InstructorId", Course.class);
+        query.setParameter("InstructorId",InstructorId);
+        List<Course> course = query.getResultList();
+        return course;
+
+    }
 
 
 }

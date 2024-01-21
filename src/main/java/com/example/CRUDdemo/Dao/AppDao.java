@@ -1,5 +1,5 @@
 package com.example.CRUDdemo.Dao;
-
+import java.util.*;
 import com.example.CRUDdemo.entity.Course;
 import com.example.CRUDdemo.entity.Instructor;
 import com.example.CRUDdemo.entity.InstructorDetail;
@@ -16,6 +16,7 @@ public interface AppDao {
 
     public void addCourse(Course newCourse);
     public void updateCourse(Course course);
+    public List<Course> getCoursesForInstructor(int InstructorId);
 
 
 }
