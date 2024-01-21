@@ -2,6 +2,7 @@ package com.example.CRUDdemo;
 
 import com.example.CRUDdemo.Dao.AppDao;
 import com.example.CRUDdemo.Dao.studentDao;
+import com.example.CRUDdemo.entity.Course;
 import com.example.CRUDdemo.entity.Instructor;
 import com.example.CRUDdemo.entity.InstructorDetail;
 import com.example.CRUDdemo.entity.Student;
@@ -31,9 +32,37 @@ public class CruDdemoApplication {
 			//createAndSaveInstructor(appDao);
 			//findInstructor(appDao,1);
 			//deleteInstructor(appDao,4);
-			findInstructorDetail(appDao,2);
+			//findInstructorDetail(appDao,2);
+			//AddCourse(appDao);
+			//AddInstructorForCourse(appDao,2,10);
+			AddNewInstructorAndCourse(appDao);
 
 		};
+	}
+
+	private void AddNewInstructorAndCourse(AppDao appDao) {
+		Instructor instructor = new Instructor("Devi","Shri","ds@gmail.com");
+		InstructorDetail detail = new InstructorDetail("ds_channel@youtube.com","java");
+		instructor.setInstructorDetail(detail);
+		Course course = new Course("Chemistry");
+		instructor.addCourse(course);
+		appDao.saveInstructor(instructor);
+
+
+
+	}
+
+	private void AddInstructorForCourse(AppDao appDao, int instructorId, int courseId) {
+		Instructor ins = appDao.findInstructorById(instructorId);
+		Course course = appDao.findCourse(courseId);
+		course.setInstructor(ins);
+		appDao.updateCourse(course);
+
+	}
+
+	private void AddCourse(AppDao appDao) {
+		Course newCourse = new Course("Physics");
+		appDao.addCourse(newCourse);
 	}
 
 	private void findInstructorDetail(AppDao appDao, int id) {
