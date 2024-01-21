@@ -1,6 +1,7 @@
 package com.example.CRUDdemo.DaoImplementations;
 
 import com.example.CRUDdemo.Dao.AppDao;
+import com.example.CRUDdemo.entity.Course;
 import com.example.CRUDdemo.entity.Instructor;
 import com.example.CRUDdemo.entity.InstructorDetail;
 import jakarta.persistence.*;
@@ -38,5 +39,26 @@ public class AppDaoImpl implements AppDao {
     public InstructorDetail findInstructorDetail(int id) {
         return em.find(InstructorDetail.class,id);
     }
+
+    @Override
+    public Course findCourse(int id) {
+        return em.find(Course.class,id);
+    }
+
+    @Override
+    @Transactional
+    public void addCourse(Course newCourse) {
+        em.persist(newCourse);
+
+    }
+
+    @Override
+    @Transactional
+    public void updateCourse(Course course) {
+        em.merge(course);
+
+    }
+
+
 
 }
