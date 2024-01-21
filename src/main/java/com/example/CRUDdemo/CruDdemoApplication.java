@@ -34,10 +34,18 @@ public class CruDdemoApplication {
 			//deleteInstructor(appDao,4);
 			//findInstructorDetail(appDao,2);
 			//AddCourse(appDao);
-			//AddInstructorForCourse(appDao,2,10);
-			AddNewInstructorAndCourse(appDao);
+			//AddInstructorForCourse(appDao,5,14);
+			//AddNewInstructorAndCourse(appDao);
+			FindCourseForInstructor(appDao,5);
 
 		};
+	}
+
+	private void FindCourseForInstructor(AppDao appDao, int id) {
+		Instructor instructor = appDao.findInstructorById(id);
+		List<Course> course = appDao.getCoursesForInstructor(id);
+		instructor.setCourses(course);
+		System.out.println(instructor.getCourses());
 	}
 
 	private void AddNewInstructorAndCourse(AppDao appDao) {
@@ -61,7 +69,7 @@ public class CruDdemoApplication {
 	}
 
 	private void AddCourse(AppDao appDao) {
-		Course newCourse = new Course("Physics");
+		Course newCourse = new Course("Computer Science");
 		appDao.addCourse(newCourse);
 	}
 
