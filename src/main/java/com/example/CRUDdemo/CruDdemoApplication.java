@@ -30,8 +30,16 @@ public class CruDdemoApplication {
 			//deleteById(studentDaoVar,8);
 			//createAndSaveInstructor(appDao);
 			//findInstructor(appDao,1);
-			deleteInstructor(appDao,3);
+			//deleteInstructor(appDao,4);
+			findInstructorDetail(appDao,2);
+
 		};
+	}
+
+	private void findInstructorDetail(AppDao appDao, int id) {
+		InstructorDetail det = appDao.findInstructorDetail(id);
+		System.out.println(det.toString());
+		System.out.println(det.getInstructor().toString());
 	}
 
 	private void deleteInstructor(AppDao appDao, int id) {
