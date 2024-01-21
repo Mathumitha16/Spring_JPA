@@ -70,5 +70,13 @@ public class AppDaoImpl implements AppDao {
 
     }
 
+    @Override
+    public Instructor findInstructorAndCourses(int id) {
+        TypedQuery<Instructor> query = em.createQuery("SELECT i FROM Instructor i JOIN FETCH i.courses WHERE i.id=:data",Instructor.class);
+        query.setParameter("data",id);
+        return query.getSingleResult();
+
+    }
+
 
 }

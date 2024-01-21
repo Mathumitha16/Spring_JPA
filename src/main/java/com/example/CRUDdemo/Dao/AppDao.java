@@ -18,5 +18,7 @@ public interface AppDao {
     public void updateCourse(Course course);
     public List<Course> getCoursesForInstructor(int InstructorId);
 
+    public Instructor findInstructorAndCourses(int id);
+
 
 }

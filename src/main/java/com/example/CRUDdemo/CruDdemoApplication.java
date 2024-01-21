@@ -36,9 +36,16 @@ public class CruDdemoApplication {
 			//AddCourse(appDao);
 			//AddInstructorForCourse(appDao,5,14);
 			//AddNewInstructorAndCourse(appDao);
-			FindCourseForInstructor(appDao,5);
+			//FindCourseForInstructor(appDao,5);
+			FindInstructorAndCourse(appDao,5);
 
 		};
+	}
+
+	private void FindInstructorAndCourse(AppDao appDao, int id) {
+		Instructor ins =appDao.findInstructorAndCourses(id);
+		System.out.println(ins);
+		System.out.println(ins.getCourses());
 	}
 
 	private void FindCourseForInstructor(AppDao appDao, int id) {
